@@ -1,14 +1,32 @@
 from django.db import models
-from django.conf import settings
 
-# Create your models here.
-class api(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField()
-    video_url = models.URLField()  # Assume video is stored in Cloudinary
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    # Add tags, likes, and comments fields if needed
+class ProjectManager(models.Model): 
+    name = models.CharField(unique=True, max_length=100)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
-def __str__(self):
-    return self.title
+    def __str__(self):
+        return self.name
+
+class Employees(models.Model): 
+    name = models.CharField(unique=True, max_length=100)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+class Project(models.Model): 
+    name = models.CharField(unique=True, max_length=100)
+    employees = models.ManyToManyField(Employees)
+    projectmanager = models.ForeignKey(ProjectManager, on_delete=models.CASCADE, blank=True, null=True)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    comments = models.CharField(max_length=500, blank=True, null=True)
+    status = models.CharField(max_length=100)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+  
