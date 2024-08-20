@@ -14,7 +14,7 @@ class Employees(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.name 
 
 class Project(models.Model): 
     name = models.CharField(unique=True, max_length=100)

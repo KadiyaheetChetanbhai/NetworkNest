@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,12 +40,24 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'api',
+    'users_app', 
+    'knox', 
+    'django_rest_passwordreset',
     'corsheaders',
+    'cloudinary',
+    'cloudinary_storage',
 
 ]
+
+
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
 ]
+
+AUTH_USER_MODEL = 'users_app.CustomUser'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -76,6 +89,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'crud.wsgi.application'
+
+
 
 
 # Database
@@ -129,3 +144,31 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+# Added by me 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+DEFAULT_FROM_EMAIL = 'Heet_kadiya'
+
+
+#knox authentication added by me
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
+
+
+# for media
+cloudinary_STORAGE = {
+    'cloud_name' : "dt5n81vtw", 
+    'api_key' : "441364813554135", 
+    'api_secret' : "9stNPFrcmZPYT-7Z6XO5kiBq0aM"
+}
