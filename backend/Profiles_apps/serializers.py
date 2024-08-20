@@ -7,12 +7,9 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = '__all__'
         extra_kwargs = {'user': {'read_only': True}}
-        
-    def create(self, validated_data):
-        profile = Profile.objects.create(**validated_data)
-        return profile
 
     def update(self, instance, validated_data):
+        instance.user = validated_data.get('user', instance.user)
         instance.bio = validated_data.get('bio', instance.bio)
         instance.profile_pic = validated_data.get('profile_pic', instance.profile_pic)
         instance.website = validated_data.get('website', instance.website)
@@ -20,9 +17,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         instance.isinvestor = validated_data.get('isinvestor', instance.isinvestor)
         instance.isenthustiast = validated_data.get('isenthustiast', instance.isenthustiast)
         instance.save()
-        return instance
-    
-    def Retrive(self, instance):
         return instance
     
 

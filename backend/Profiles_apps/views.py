@@ -12,7 +12,7 @@ class ProfileViewset(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [permissions.AllowAny]
-    def Retrive(self, request):
+    def Retrive(self):
         instance= self.get_object()
         return Response({'user': instance})
     
@@ -27,7 +27,7 @@ class UpdateViewset(viewsets.ViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class ModelDeleteViewset(viewsets.ViewSet):
-    def destroy(self, request, pk=None):
+    def destroy(self, pk=None):
         user = User.objects.get(pk=pk)
         user.delete()
         return Response({'message': 'User deleted'}, status=status.HTTP_204_NO_CONTENT)
