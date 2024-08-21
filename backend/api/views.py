@@ -13,7 +13,7 @@ class ProjectManagerViewset(viewsets.ViewSet):
     queryset = ProjectManager.objects.all()
     serializer_class = ProjectManagerSerializer
 
-    def list(self, request):
+    def list(self):
         queryset = ProjectManager.objects.all()
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
@@ -23,7 +23,7 @@ class EmployeesViewset(viewsets.ViewSet):
     queryset = Employees.objects.all()
     serializer_class = EmployeesSerializer
 
-    def list(self, request):
+    def list(self):
         queryset = Employees.objects.all()
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
@@ -34,7 +34,7 @@ class ProjectViewset(viewsets.ViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
-    def list(self, request):
+    def list(self):
         queryset = Project.objects.all()
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
@@ -47,7 +47,7 @@ class ProjectViewset(viewsets.ViewSet):
         else: 
             return Response(serializer.errors, status=400)
 
-    def retrieve(self, request, pk=None):
+    def retrieve(self, pk=None):
         project = self.queryset.get(pk=pk)
         serializer = self.serializer_class(project)
         return Response(serializer.data)
@@ -61,7 +61,7 @@ class ProjectViewset(viewsets.ViewSet):
         else: 
             return Response(serializer.errors, status=400)
 
-    def destroy(self, request, pk=None):
+    def destroy(self,  pk=None):
         project = self.queryset.get(pk=pk)
         project.delete()
         return Response(status=204)

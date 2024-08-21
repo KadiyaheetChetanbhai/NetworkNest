@@ -6,7 +6,9 @@ from users_app.models import CustomUser      ## imported models from users_app t
 # New fields like bio,profile_pic,website urls,isenterprenuer,isinvestor,isenthustiast are added to the user model 
 
 class Profile(models.Model):
-    user = models.OneToOneField(CustomUser, max_length=254, on_delete=models.CASCADE)
+    
+    user_id = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    username = models.CharField(max_length=254, blank=True)
     bio = models.TextField(blank=True)
     profile_pic = models.ImageField(upload_to='profile_pics',blank=True)
     website = models.URLField(blank=True)
@@ -15,4 +17,4 @@ class Profile(models.Model):
     isenthustiast = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.user.email
+        return self.user_id
