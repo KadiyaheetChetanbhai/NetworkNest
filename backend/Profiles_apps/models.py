@@ -17,4 +17,4 @@ class Profile(models.Model):
     isenthustiast = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.user_id
+        return self.username
