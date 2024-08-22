@@ -9,8 +9,9 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
 from django.utils.html import strip_tags
 
+
 class CustomUserManager(BaseUserManager): 
-    def create_user(self, email, username=None, bio=None, profile_pic=None, password=None, **extra_fields): 
+    def create_user(self, email, username=None, bio=None, profile_pic=models.ImageField(upload_to='/profile_pics', height_field=None, width_field=None, max_length=None), password=None, **extra_fields): 
         if not email: 
             raise ValueError('Email is a required field')
         email = self.normalize_email(email)
@@ -36,7 +37,7 @@ class CustomUserManager(BaseUserManager):
         if bio is None:
             bio = 'Admin user'
         if profile_pic is None:
-            profile_pic = 'default_admin_pic.jpg'
+            profile_pic = 'default_profile_pic/photos.jpg'
 
         return self.create_user(email, username, bio, profile_pic, password, **extra_fields)
 
@@ -53,29 +54,3 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = []
 
 
-@receiver(reset_password_token_created)
-def password_reset_token_created(reset_password_token, *args, **kwargs):
-    sitelink = "http://localhost:3000/"
-    token = "{}".format(reset_password_token.key)
-    full_link = str(sitelink)+str("password-reset/")+str(token)
-
-    print(token)
-    print(full_link)
-
-    context = {
-        'full_link': full_link,
-        'email_adress': reset_password_token.user.email
-    }
-
-    html_message = render_to_string("backend/email.html", context=context)
-    plain_message = strip_tags(html_message)
-
-    msg = EmailMultiAlternatives(
-        subject = "Request for resetting password for {title}".format(title=reset_password_token.user.email), 
-        body=plain_message,
-        from_email = "heetkadiya@gmail.com", 
-        to=[reset_password_token.user.email]
-    )
-
-    msg.attach_alternative(html_message, "text/html")
-    msg.send()

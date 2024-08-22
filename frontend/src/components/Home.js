@@ -27,6 +27,10 @@ const Home = () =>{
                     <Box key={index} sx={{p:2, m:2, boxShadow:3}}>
                         <div> ID: {item.id}</div>
                         <div> Email: {item.email} </div>
+                        <div> Username: {item.username}</div>
+                        <div> Bio: {item.bio}</div>
+                        <div> <h2>hii: {item.profile_picture}</h2>
+                        </div>
                     </Box>
                 )
                 )}

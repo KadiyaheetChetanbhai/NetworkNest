@@ -70,13 +70,7 @@ const Register = () => {
                         />
                     </Box>
 
-                    <Box className={"itemBox"}>
-                        <MyPassField
-                            label={"Password"}
-                            name={"password"}
-                            control={control}
-                        />
-                    </Box>
+
 
                     <Box className={"itemBox"}>
                         <MyTextField
@@ -93,29 +87,35 @@ const Register = () => {
                             control={control}
                         />
                     </Box>
-   
 
-                        <Box className={"itemBox"}>
-                            <MyPassField
-                                label={"Confirm password"}
-                                name={"password2"}
-                                control={control}
-                            />
-                        </Box>
-
-                        <Box className={"itemBox"}>
-                            <MyButton
-                                type={"submit"}
-                                label={"Register"}
-                            />
-                        </Box>
-
-                        <Box className={"itemBox"}>
-                            <Link to="/"> Already registered? Please login! </Link>
-                        </Box>
-
-
+                    <Box className={"itemBox"}>
+                        <MyPassField
+                            label={"Password"}
+                            name={"password"}
+                            control={control}
+                        />
                     </Box>
+                    <Box className={"itemBox"}>
+                        <MyPassField
+                            label={"Confirm password"}
+                            name={"password2"}
+                            control={control}
+                        />
+                    </Box>
+
+                    <Box className={"itemBox"}>
+                        <MyButton
+                            type={"submit"}
+                            label={"Register"}
+                        />
+                    </Box>
+
+                    <Box className={"itemBox"}>
+                        <Link to="/"> Already registered? Please login! </Link>
+                    </Box>
+
+
+                </Box>
 
             </form>
 
