@@ -93,14 +93,7 @@ const Register = () => {
                             control={control}
                         />
                     </Box>
-
-                    <Box className={"itemBox"}>
-                        <MyTextField
-                            label={"Profile picture"}
-                            name={"profile_pic"}
-                            control={control}
-                        />
-                    </Box>    
+   
 
                         <Box className={"itemBox"}>
                             <MyPassField
