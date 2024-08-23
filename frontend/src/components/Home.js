@@ -29,8 +29,6 @@ const Home = () =>{
                         <div> Email: {item.email} </div>
                         <div> Username: {item.username}</div>
                         <div> Bio: {item.bio}</div>
-                        <div> <h2>hii: {item.profile_picture}</h2>
-                        </div>
                     </Box>
                 )
                 )}

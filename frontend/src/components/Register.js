@@ -19,7 +19,6 @@ const Register = () => {
             email: yup.string().email('Field expects an email adress').required('Email is a required field'),
             username: yup.string().required('Username is a required field').min(4, 'Username must be at least 4 characters'),
             bio: yup.string(),
-            profile_pic: yup.string(),
             password: yup.string()
                 .required('Password is a required field')
                 .min(4, 'Password must be at least 4 characters')
@@ -40,7 +39,6 @@ const Register = () => {
             password: data.password,
             username: data.username,
             bio: data.bio,
-            profile_picture: data.profile_pic
 
         })
 

@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'users_app',
     'Profiles_apps', 
     'knox', 
-    'django_rest_passwordreset',
     'corsheaders',
     'cloudinary',
     'cloudinary_storage',
@@ -146,7 +145,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+STATICFILES_DIRS=[
+    BASE_DIR/'crud/profile_pics/ ',
+]
 
 
 
