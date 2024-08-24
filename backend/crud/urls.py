@@ -33,4 +33,7 @@ urlpatterns = [
     # Posts URLS
     path('posts/', include('Posts_app.urls')),
 
+    # Legal_Financial URLS
+    path('legal_financial/', include('Legal_Financial_app.urls')),
+
 ]
