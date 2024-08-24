@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
+import cloudinary                    #
+import cloudinary.uploader           ## imports required for cloudinay 
+import cloudinary.api                # 
+from django.conf import settings     #
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,7 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'users_app',
-    'Profiles_apps', 
+    'Posts_app',
     'knox', 
     'corsheaders',
     'cloudinary',
@@ -145,9 +150,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS=[
-    BASE_DIR/'crud/profile_pics/ ',
-]
 
 
 

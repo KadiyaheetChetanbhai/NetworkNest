@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ProfilesAppsConfig(AppConfig):
+class PostsAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Profiles_apps'
+    name = 'Posts_app'
