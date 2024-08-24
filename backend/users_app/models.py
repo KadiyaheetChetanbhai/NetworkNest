@@ -29,7 +29,7 @@ class CustomUserManager(BaseUserManager):
         if bio is None:
             bio = 'Admin user'
        
-        return self.create_user(email, username, bio, profile_pic, password, **extra_fields)
+        return self.create_user(email, username, bio, password, **extra_fields)
 
 class CustomUser(AbstractUser):
     email = models.EmailField(max_length=200, unique=True)
