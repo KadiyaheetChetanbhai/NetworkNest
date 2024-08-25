@@ -1,10 +1,12 @@
-from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import Create_Post, Update_Post, Delete_Post
-router= DefaultRouter()
-router.register('Createpost',Create_Post , basename='Create_post')
-router.register('Updatepost/<int:pk>',Update_Post , basename='Update_post')
-router.register('Deletepost',Delete_Post , basename='Delete_post')  
-urlpatterns = router.urls
+from .views import MediaUploadView, Update_Post, Delete_Post
 
+router = DefaultRouter()
+router.register(r'update-post', Update_Post, basename='update-post')
+router.register(r'delete-post', Delete_Post, basename='delete-post')
+
+urlpatterns = [
+    path('media/', MediaUploadView.as_view(), name='media-upload'),  # Regular APIView
+    path('', include(router.urls)),  # ViewSets
+]

@@ -17,7 +17,6 @@ import cloudinary.uploader           ## imports required for cloudinay
 import cloudinary.api                # 
 from django.conf import settings     #
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -57,6 +56,15 @@ INSTALLED_APPS = [
 ]
 
 
+CLOUDINARY_STORAGE = {
+    'cloud_name' : "dt5n81vtw", 
+    'api_key' : "441364813554135", 
+    'api_secret' : "9stNPFrcmZPYT-7Z6XO5kiBq0aM"
+}
+CLOUDINARY_URL = 'cloudinary://441364813554135:9stNPFrcmZPYT-7Z6XO5kiBq0aM@dt5n81vtw1'
+cloudinary.config(
+    cloudinary_url=CLOUDINARY_URL
+)
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
@@ -147,6 +155,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -172,16 +181,5 @@ REST_FRAMEWORK = {
 }
 
 
-# for media
-cloudinary_STORAGE = {
-    'cloud_name' : "dt5n81vtw", 
-    'api_key' : "441364813554135", 
-    'api_secret' : "9stNPFrcmZPYT-7Z6XO5kiBq0aM"
-}
 
 
-cloudinary.config( 
-  cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'), 
-  api_key = os.getenv('CLOUDINARY_API_KEY'), 
-  api_secret = os.getenv('CLOUDINARY_API_SECRET')
-)
