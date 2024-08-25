@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'users_app',
     'Posts_app',
     'Legal_Financial_app',
+    'like_share_comments_app',
     'knox', 
     'corsheaders',
     'cloudinary',
@@ -177,3 +178,10 @@ cloudinary_STORAGE = {
     'api_key' : "441364813554135", 
     'api_secret' : "9stNPFrcmZPYT-7Z6XO5kiBq0aM"
 }
+
+
+cloudinary.config( 
+  cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'), 
+  api_key = os.getenv('CLOUDINARY_API_KEY'), 
+  api_secret = os.getenv('CLOUDINARY_API_SECRET')
+)

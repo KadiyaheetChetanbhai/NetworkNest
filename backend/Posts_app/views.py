@@ -2,7 +2,6 @@ from django.shortcuts import render
 from rest_framework import viewsets, permissions 
 from .serializers import *
 from .models import * 
-import cloudinary.uploader
 from rest_framework.response import Response
 
 from .serializers import PostsSerializer 

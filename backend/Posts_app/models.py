@@ -14,7 +14,6 @@ class Posts(models.Model):
     Image_content = CloudinaryField('images',blank=True, null=True)
     Blobs_content = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True, null=True)
-    createdBy = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name='posts_createdBy',null=True)
 
     def __str__(self):
         return self.title
