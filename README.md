@@ -1,11 +1,10 @@
 # Network Nest
 
-**Network Nest** is a dynamic platform designed to bridge the gap between startups and investors. It also serves as a job portal where individuals can explore and apply for opportunities within startups. The platform is built with modern web technologies, offering a seamless user experience.
+**Network Nest** is a dynamic platform designed to bridge the gap between startups and investors.  The platform is built with modern web technologies, offering a seamless user experience.
 
 ## Features
 
 - **Investor-Startup Connection:** Facilitates meaningful connections between startups seeking investment and potential investors.
-- **Job Application Portal:** Allows users to apply for job openings within startups.
 - **Short Video Platform:** Features a reels-like section for short videos, enhancing engagement.
 - **Startup Analytics:** Investors can access detailed analytics on startup performance, including profitability and financial ratios.
 - **Legal Case Upload:** Startups can upload information regarding their legal cases for transparency.
