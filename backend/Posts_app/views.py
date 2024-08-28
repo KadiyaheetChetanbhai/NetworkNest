@@ -35,7 +35,7 @@ class Delete_Post(viewsets.ModelViewSet):
     queryset = Posts.objects.all()  # Define the queryset
     serializer_class = DeletePostSerializer
 
-    def destroy(self, request, pk=None):
+    def destroy(self, pk=None):
         post = self.get_object()
         post.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
