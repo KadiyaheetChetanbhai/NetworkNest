@@ -49,10 +49,9 @@ class RegisterViewset(viewsets.ViewSet):
 
 class UserViewset(viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticated]
-    queryset = User.objects.all()
     serializer_class = RegisterSerializer
 
-    def list(self,request):
-        queryset = User.objects.all()
-        serializer = self.serializer_class(queryset, many=True)
+    def list(self, request):
+        user = request.user
+        serializer = self.serializer_class(user)
         return Response(serializer.data)

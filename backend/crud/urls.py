@@ -31,12 +31,11 @@ urlpatterns = [
 
 
     # Posts URLS
-    path('posts/', include('Posts_app.urls')),
+    path('posts/', include('Posts_apps.urls')),
 
     # Legal_Financial URLS
     path('legal_financial/', include('Legal_Financial_app.urls')),
 
     # Like, Share, Comment URLS
-    path('like_share_comment/', include('like_share_comments_app.urls')),
 
 ]

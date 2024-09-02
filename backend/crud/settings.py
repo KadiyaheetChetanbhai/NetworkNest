@@ -45,9 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'users_app',
-    'Posts_app',
+    'Posts_apps',
     'Legal_Financial_app',
-    'like_share_comments_app',
     'knox', 
     'corsheaders',
     'cloudinary',
@@ -67,6 +66,8 @@ cloudinary.config(
 )
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
