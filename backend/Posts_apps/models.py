@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Posts(models.Model):
+    post_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='posts', default=1)
     title = models.CharField(max_length=100)
     caption = models.TextField(null=True)

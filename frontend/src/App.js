@@ -9,6 +9,7 @@ import {Routes, Route, useLocation} from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoutes'
 import PasswordResetRequest from './components/PasswordResetRequest'
 import PasswordReset from './components/PasswordReset'
+import { UploadForm } from './components/About';
 
 function App() {
   const location = useLocation()
