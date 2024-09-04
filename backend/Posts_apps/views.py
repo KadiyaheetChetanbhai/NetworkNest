@@ -26,3 +26,14 @@ class PostretriveSerializer(viewsets.ModelViewSet):
         queryset = self.get_queryset()
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
+
+
+class PostDeleteSerializer(viewsets.ModelViewSet):
+    queryset = Posts.objects.all()
+    serializer_class = PostSerializer
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response("deleted succesfully ",status=status.HTTP_204_NO_CONTENT)
