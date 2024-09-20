@@ -1,12 +1,20 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from .views import Create_Financial, Update_Financial, Delete_Financial, Create_Legal, Update_Legal, Delete_Legal
+from .views import Create_Financial, Create_Legal, Delete_Financial, Delete_Legal, Update_Financial, Update_Legal
+# from views import*
+
+
 router= DefaultRouter()
-router.register('uploadfinancial',Create_Financial , basename='Create_Financial')
-router.register('Updatefinancial',Update_Financial , basename='update_Financial')
-router.register('deletefinancials',Delete_Financial , basename='delete_Financial')  
-router.register('createlegal',Create_Legal , basename='Create_Legal')
-router.register('updatelegal',Update_Legal , basename='update_Legal')
-router.register('deletelegal',Delete_Legal , basename='delete_Legal')
-urlpatterns = router.urls
+router.register(r'CreateFinData',Create_Financial,basename='CreateFinData')
+router.register(r'CreateLegalData',Create_Legal , basename='CreateLegalData')
+router.register(r'updateFin',Update_Financial , basename='updateFin')
+router.register(r'updateLegal',Update_Legal , basename='updateLegal')
+router.register(r'deleteFin',Delete_Financial , basename='deleteFin')
+router.register(r'deleteLegal',Delete_Legal , basename='deleteLegal')
+
+
+
+urlpatterns = [
+    path('', include(router.urls)),
+]
