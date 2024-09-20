@@ -18,7 +18,7 @@ const UploadForm = () => {
 
     useEffect(() => {
         // Fetch posts to populate the select field for updating or deleting
-        AxiosInstance.get('posts/')
+        AxiosInstance.get('posts/Post_part/')
             .then((response) => setPosts(response.data))
             .catch((error) => console.error('Error fetching posts', error));
     }, []);
@@ -55,7 +55,7 @@ const UploadForm = () => {
         }
 
         if (uploadedUrl || selectedPostId) {
-            const apiEndpoint = selectedPostId ? `posts/${selectedPostId}/` : 'posts/Create/';
+            const apiEndpoint = selectedPostId ? `posts/${selectedPostId}/` : 'posts/Post_part/';
             const method = selectedPostId ? 'put' : 'post';
 
             AxiosInstance[method](apiEndpoint, {
@@ -80,7 +80,7 @@ const UploadForm = () => {
     const handleDelete = () => {
         if (!selectedPostId) return;
 
-        AxiosInstance.delete(`posts/${selectedPostId}/`)
+        AxiosInstance.delete(`posts/Post_part/${selectedPostId}/`)
             .then(() => {
                 console.log('Post deleted');
                 reset();

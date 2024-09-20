@@ -6,7 +6,7 @@ const PostsList = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        AxiosInstance.get('/posts/List/')
+        AxiosInstance.get('/posts/Post_part/')
             .then((response) => {
                 setPosts(response.data);
             })
@@ -16,7 +16,7 @@ const PostsList = () => {
     }, []);
 
     const handleDelete = (postId) => {
-        AxiosInstance.delete(`/posts/delete/${postId}/`)
+        AxiosInstance.delete(`/posts/Post_part/${postId}/`)
             .then(() => {
                 setPosts(posts.filter(post => post.post_id !== postId));
             })
