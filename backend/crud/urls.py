@@ -36,6 +36,9 @@ urlpatterns = [
     # Legal_Financial URLS
     path('legal_financial/', include('Legal_Financial_app.urls')),
 
-    # Like, Share, Comment URLS
+
+    # Jobs URLS
+    path('jobs/', include('Jobs.urls')),
+
 
 ]

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import AxiosInstance from './AxiosInstance'; // Your configured Axios instance
-import { Grid, Box, Button } from '@mui/material';
+import { Grid, Box, Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 
 const PostsList = () => {
     const [posts, setPosts] = useState([]);
+    const [commentDialogOpen, setCommentDialogOpen] = useState(false);
+    const [currentPost, setCurrentPost] = useState(null);
+    const [commentText, setCommentText] = useState('');
 
     useEffect(() => {
         AxiosInstance.get('/posts/Post_part/')
@@ -25,6 +28,42 @@ const PostsList = () => {
             });
     };
 
+    const handleLike = (postId) => {
+        AxiosInstance.post(`/posts/Post_part/${postId}/`)
+            .then((response) => {
+                // Optionally fetch posts again or update the state to reflect the new like
+                setPosts(posts.map(p => (p.post_id === postId ? { ...p, likes: [...p.likes, response.data.user_id] } : p)));
+                console.log('Post liked', response.data);
+            })
+            .catch((error) => {
+                console.error('Error liking post', error);
+            });
+    };
+    const handleOpenCommentDialog = (post) => {
+        setCurrentPost(post);
+        setCommentText('');
+        setCommentDialogOpen(true);
+    };
+
+    const handleCloseCommentDialog = () => {
+        setCommentDialogOpen(false);
+        setCurrentPost(null);
+    };
+
+    const handleCommentSubmit = () => {
+        AxiosInstance.post('posts/comments/', {
+            post: currentPost.post_id,
+            comment_text: commentText,
+        })
+            .then(() => {
+                handleCloseCommentDialog();
+                // Optionally fetch posts again or update the state to reflect the new comment
+            })
+            .catch((error) => {
+                console.error('Error submitting comment', error);
+            });
+    };
+
     return (
         <Grid container spacing={3}>
             {posts.length > 0 ? (
@@ -41,7 +80,23 @@ const PostsList = () => {
                             <p>{post.blog_content}</p>
                             <Button
                                 variant="contained"
+                                color="primary"
+                                onClick={() => handleLike(post.post_id)}
+                                sx={{ mr: 1 }}
+                            >
+                                Like
+                            </Button>
+                            <Button
+                                variant="contained"
                                 color="secondary"
+                                onClick={() => handleOpenCommentDialog(post)}
+                                sx={{ mr: 1 }}
+                            >
+                                Comment
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="error"
                                 onClick={() => handleDelete(post.post_id)}
                             >
                                 Delete
@@ -52,6 +107,26 @@ const PostsList = () => {
             ) : (
                 <p>No posts available.</p>
             )}
+
+            {/* Comment Dialog */}
+            <Dialog open={commentDialogOpen} onClose={handleCloseCommentDialog}>
+                <DialogTitle>Add a Comment</DialogTitle>
+                <DialogContent>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        label="Comment"
+                        type="text"
+                        fullWidth
+                        value={commentText}
+                        onChange={(e) => setCommentText(e.target.value)}
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseCommentDialog}>Cancel</Button>
+                    <Button onClick={handleCommentSubmit}>Submit</Button>
+                </DialogActions>
+            </Dialog>
         </Grid>
     );
 };

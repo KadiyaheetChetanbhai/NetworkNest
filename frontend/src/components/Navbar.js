@@ -11,7 +11,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import {Link, useLocation} from 'react-router-dom'
@@ -87,6 +86,25 @@ export default function Navbar(props) {
                 </ListItemButton>
               </ListItem>
   
+              <ListItem key={4} disablePadding>
+                <ListItemButton component={Link} to="/JobListing" selected={"/JobListing" === path}>
+                  <ListItemIcon>
+                        <HomeIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={"Jobs_post"} />
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem key={5} disablePadding>
+                <ListItemButton component={Link} to="/JobApplication" selected={"/JobApplication" === path}>
+                  <ListItemIcon>
+                        <HomeIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={"Jobs_application"} />
+                </ListItemButton>
+              </ListItem>
+
+
           </List>
          
         </Box>

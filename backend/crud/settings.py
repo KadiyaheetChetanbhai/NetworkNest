@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'users_app',
     'Posts_apps',
     'Legal_Financial_app',
+    'Jobs',
     'knox', 
     'corsheaders',
     'cloudinary',
