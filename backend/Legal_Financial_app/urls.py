@@ -4,8 +4,8 @@ from .views import LegalViewSet, FinancialViewSet
 
 
 router= DefaultRouter()
-router.register(r'FinData',LegalViewSet,basename='FinData')
-router.register(r'LegalData',FinancialViewSet , basename='LegalData')
+router.register(r'LegalData',LegalViewSet,basename='FinData')
+router.register(r'FinData',FinancialViewSet , basename='LegalData')
 
 
 

@@ -6,7 +6,6 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import Postlist from './components/PostList'
 import JobListings from './components/joblisting.js'
 import JobApplication from './components/jobapplication.js'
-import Landing_page from './components/Landing_page.js'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

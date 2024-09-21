@@ -41,4 +41,7 @@ urlpatterns = [
     path('jobs/', include('Jobs.urls')),
 
 
+    # Funding URLS
+    path('funding/', include('Funding.urls')),
+
 ]
