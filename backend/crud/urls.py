@@ -44,4 +44,11 @@ urlpatterns = [
     # Funding URLS
     path('funding/', include('Funding.urls')),
 
+
+    # Events URLS
+    path('network/', include('Events.urls')),
+
+    # Company URLS
+    path('company/', include('company.urls')),
+
 ]
